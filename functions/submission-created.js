@@ -10,14 +10,14 @@ exports.handler = function (event, context, callback) {
 
   const client = require("twilio")(ACCOUNT_SID, AUTH_TOKEN);
   
-  const POSTData = querystring.parse(event.body);
-  const phoneNumber = phone(POSTData.number);
+  const data = querystring.parse(event.body);
+  const phoneNumber = phone(data.mobile);
   const outgoingPhoneNumber = '15108803280'
 
   (async() => {
     client.messages
       .create({
-        body: `Ballot Request Received!`,
+        body: `Hi ${data.firstName}, your ballot request was received!`,
         to: phoneNumber,
         from: outgoingPhoneNumber
       })

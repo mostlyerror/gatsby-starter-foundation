@@ -3,12 +3,17 @@ import { useForm } from "react-hook-form";
 
 const BallotForm = () => {
   const { register, handleSubmit, watch, errors } = useForm();
-  // const onSubmit = (data) => console.log(data);
+
   console.log(watch("errors")); 
+
+  const onSubmit = (data) => {
+    console.log(data);
+  }
 
   return (
     <div className="container">
       <form 
+      onSubmit={handleSubmit(onSubmit)}
       action="/thanks"
       name="ballot-request"
       method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
