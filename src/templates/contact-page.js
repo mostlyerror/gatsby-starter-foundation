@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import {RiSendPlane2Line} from "react-icons/ri";
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 
 export const pageQuery = graphql`
   query ContactQuery($id: String!){
@@ -29,10 +28,6 @@ const Contact = ({data}) => {
 
   return  (
     <Layout className="contact-page">
-      <SEO 
-        title={frontmatter.title}
-        description={frontmatter.title + " " + site.siteMetadata.title}
-      />
       <div className="wrapper">
         <h1>{frontmatter.title}</h1>
         <div className="description" dangerouslySetInnerHTML={{ __html: html }} />
